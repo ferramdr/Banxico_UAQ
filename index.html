@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinReport AI - Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <header class="top-nav">
+            <h1 class="logo">FinReport AI</h1>
+            <nav class="nav-links">
+                <a href="#" class="nav-item active" data-view="dashboard"><i class="fas fa-chart-line"></i> Dashboard</a>
+                <a href="#" class="nav-item" data-view="captura"><i class="fas fa-plus"></i> Captura</a>
+                <a href="#" class="nav-item" data-view="presupuesto"><i class="fas fa-money-check-alt"></i> Presupuesto</a>
+                <a href="#" class="nav-item" data-view="generar"><i class="fas fa-cogs"></i> Generar</a>
+                <a href="#" class="nav-item" data-view="estados"><i class="fas fa-clipboard-list"></i> Estados</a>
+            </nav>
+            <div class="user-info">
+                <span>0 entradas • 0 reportes</span>
+            </div>
+        </header>
+
+        <div id="view-container">
+            <main class="main-content dashboard-view" id="view-dashboard">
+                <div class="metrics-row">
+                    <div class="metric-card">
+                        <p>Total de Entradas</p><p class="value-large">0</p>
+                        <p class="trend positive">▲ +12% vs mes anterior</p>
+                    </div>
+                    <div class="metric-card">
+                        <p>Reportes Generados</p><p class="value-large">0</p>
+                        <p class="trend-sub">Último: Hace 2 días</p>
+                    </div>
+                    <div class="metric-card">
+                        <p>Ingresos del Mes</p><p class="value-large">$0.00</p>
+                        <p class="trend-sub">Margen: 0%</p>
+                    </div>
+                    <div class="metric-card loss">
+                        <p>Utilidad del Mes</p><p class="value-large">$0.00</p>
+                        <p class="trend negative">▼ Pérdida</p>
+                    </div>
+                </div>
+                <div class="charts-row">
+                    <div class="chart-card wide">
+                        <h2><i class="fas fa-chart-area"></i> Tendencia de Ingresos (12 meses)</h2>
+                        <div class="chart-placeholder"><p>No hay suficientes datos para mostrar tendencias</p></div>
+                    </div>
+                    <div class="chart-card narrow distribution-grid">
+                        <h2><i class="fas fa-chart-pie"></i> Distribución por Categorías</h2>
+                        <div class="category-box"><p>Ingresos</p><p class="cat-value">$0.00</p><p class="cat-entries">0 entradas</p></div>
+                        <div class="category-box"><p>Costo de Ventas</p><p class="cat-value">$0.00</p><p class="cat-entries">0 entradas</p></div>
+                        <div class="category-box"><p>Gastos Operativos</p><p class="cat-value">$0.00</p><p class="cat-entries">0 entradas</p></div>
+                        <div class="category-box"><p>Activos</p><p class="cat-value">$0.00</p><p class="cat-entries">0 entradas</p></div>
+                        <div class="category-box"><p>Pasivos</p><p class="cat-value">$0.00</p><p class="cat-entries">0 entradas</p></div>
+                        <div class="category-box"><p>Capital</p><p class="cat-value">$0.00</p><p class="cat-entries">0 entradas</p></div>
+                    </div>
+                </div>
+                <div class="quick-actions-row">
+                    <h2>Acciones Rápidas</h2>
+                    <div class="actions-grid">
+                        <button class="quick-action-btn" data-view-target="captura"><i class="fas fa-plus"></i> Nueva Entrada</button>
+                        <button class="quick-action-btn" data-view-target="generar">Generar Reporte</button>
+                        <button class="quick-action-btn" data-view-target="presupuesto">Crear Presupuesto</button>
+                        <button class="quick-action-btn" data-view-target="estados">Ver Estados</button>
+                    </div>
+                </div>
+            </main>
+
+            <main class="main-content capture-view hidden" id="view-captura">
+                <div class="form-card">
+                    <h2><i class="fas fa-plus-circle"></i> Nueva Entrada Financiera</h2>
+                    <p class="subtitle">Agregue transacciones y movimientos financieros</p>
+                    <form class="financial-form">
+                        <label for="cuenta">Nombre de Cuenta *</label><input type="text" id="cuenta" placeholder="Ej: Ventas de Productos" required>
+                        <label for="monto">Monto *</label><input type="number" id="monto" value="$ 0.00" required>
+                        <label for="categoria">Categoría *</label><select id="categoria" required><option value="" disabled selected>Seleccione una categoría</option></select>
+                        <label for="fecha">Fecha *</label>
+                        <div class="date-input"><i class="far fa-calendar-alt"></i><input type="date" id="fecha" required></div>
+                        <label for="descripcion">Descripción</label><textarea id="descripcion" rows="3" placeholder="Descripción adicional..."></textarea>
+                        <button type="submit" class="btn-primary">Agregar Entrada</button>
+                    </form>
+                </div>
+                <div class="recent-entries-card">
+                    <h2>Entradas Recientes</h2>
+                    <p class="subtitle">Últimas transacciones agregadas</p>
+                    <div class="no-entries"><i class="fas fa-plus"></i><p>No hay entradas aún</p></div>
+                </div>
+            </main>
+
+            <main class="main-content capture-view hidden" id="view-presupuesto">
+                <div class="form-card">
+                    <h2><i class="fas fa-money-check-alt"></i> Crear Presupuesto</h2>
+                    <p class="subtitle">Defina presupuestos mensuales para controlar gastos</p>
+                    <form class="financial-form">
+                        <label for="presupuesto-cuenta">Cuenta Presupuestaria *</label><input type="text" id="presupuesto-cuenta" placeholder="Ej: Gastos de Marketing" required>
+                        <label for="monto-presupuestado">Monto Presupuestado *</label><input type="number" id="monto-presupuestado" value="$ 0.00" required>
+                        <label for="presupuesto-categoria">Categoría *</label><select id="presupuesto-categoria" required><option value="" disabled selected>Seleccione una categoría</option></select>
+                        <label for="periodo">Periodo (YYYY-MM) *</label>
+                        <div class="date-input"><input type="month" id="periodo" placeholder="------ de --" required></div>
+                        <button type="submit" class="btn-success">Crear Presupuesto</button>
+                    </form>
+                </div>
+                <div class="recent-entries-card">
+                    <h2>Presupuestos Activos</h2>
+                    <div class="no-entries large-icon"><i class="fas fa-circle-notch"></i><p>No hay presupuestos definidos</p></div>
+                </div>
+            </main>
+
+            <main class="main-content generation-view hidden" id="view-generar">
+                <div class="form-card generation-card">
+                    <h2><i class="fas fa-chart-area"></i> Generar Estados Financieros Avanzados</h2>
+                    <p class="subtitle">Cree reportes completos con análisis de IA, ratios financieros y estimaciones fiscales</p>
+                    
+                    <div class="date-range-group">
+                        <div class="date-field">
+                            <label for="fecha-inicio">Fecha de Inicio</label>
+                            <div class="date-input"><i class="far fa-calendar-alt"></i><input type="date" id="fecha-inicio" placeholder="Seleccionar fecha de inicio"></div>
+                        </div>
+                        <div class="date-field">
+                            <label for="fecha-fin">Fecha de Fin</label>
+                            <div class="date-input"><i class="far fa-calendar-alt"></i><input type="date" id="fecha-fin" placeholder="Seleccionar fecha de fin"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="advanced-options">
+                        <label>Opciones Avanzadas</label>
+                        <div class="checkbox-group">
+                            <label class="toggle-switch"><input type="checkbox"><span class="slider round"></span>Incluir proyecciones de flujo de caja (3 meses)</label>
+                            <label class="toggle-switch"><input type="checkbox"><span class="slider round"></span>Análisis de variación presupuestaria</label>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn-ai-generate">Generar Estados Financieros con IA</button>
+                    
+                    <div class="no-data-message">
+                        <i class="fas fa-file-invoice"></i>
+                        <p>No hay datos para generar estados</p>
+                        <p class="sub-text">Agregue entradas financieras primero</p>
+                    </div>
+                </div>
+            </main>
+
+            <main class="main-content states-view hidden" id="view-estados">
+                <div class="states-message-card">
+                    <i class="fas fa-file-alt"></i>
+                    <h2>No hay estados financieros</h2>
+                    <p class="subtitle">Genere su primer reporte financiero con análisis avanzado de IA</p>
+                    <button class="btn-ai-generate purple-gradient" data-view-target="generar">Generar Estados Financieros</button>
+                </div>
+            </main>
+        </div>
+        
+        <footer class="made-with">Made with Emergent</footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const navItems = document.querySelectorAll('.nav-item');
+            const mainViews = document.querySelectorAll('.main-content');
+            const quickActionButtons = document.querySelectorAll('.quick-action-btn');
+
+            function showView(viewId) {
+                // 1. Oculta todas las vistas
+                mainViews.forEach(view => view.classList.add('hidden'));
+                // 2. Muestra la vista solicitada
+                document.getElementById('view-' + viewId).classList.remove('hidden');
+                
+                // 3. Actualiza el estado activo de la navegación
+                navItems.forEach(item => item.classList.remove('active'));
+                const activeNavItem = document.querySelector(`.nav-item[data-view="${viewId}"]`);
+                if (activeNavItem) {
+                    activeNavItem.classList.add('active');
+                }
+            }
+
+            // Manejar clics en la navegación principal
+            navItems.forEach(item => {
+                item.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const view = item.getAttribute('data-view');
+                    showView(view);
+                });
+            });
+
+            // Manejar clics en las acciones rápidas
+            quickActionButtons.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const view = button.getAttribute('data-view-target');
+                    showView(view);
+                });
+            });
+            
+            // Mostrar Dashboard al cargar
+            showView('dashboard');
+        });
+    </script>
+</body>
+</html>
