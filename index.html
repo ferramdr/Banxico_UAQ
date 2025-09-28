@@ -21,6 +21,9 @@
             <div class="user-info">
                 <span>0 entradas • 0 reportes</span>
             </div>
+
+
+            
         </header>
 
         <div id="view-container">
@@ -43,21 +46,42 @@
                         <p class="trend negative">▼ Pérdida</p>
                     </div>
                 </div>
+
+                <div class="ai-advice-row">
+                    <div class="ai-advice-card">
+                        <i class="fas fa-robot"></i>
+                        <div class="advice-content">
+                            <h2>Consejo Financiero de IA</h2>
+                            <p id="ai-advice-text">¡Bienvenido! Empiece por registrar su primera **Nueva Entrada** para que la IA pueda analizar su situación y ofrecerle consejos personalizados. ¡El éxito financiero comienza con la data!</p>
+                            <button id="next-advice-btn" class="btn-secondary">Siguiente Consejo</button>
+                        </div>
+                    </div>
+                </div>
                 <div class="charts-row">
                     <div class="chart-card wide">
                         <h2><i class="fas fa-chart-area"></i> Tendencia de Ingresos (12 meses)</h2>
                         <div class="chart-placeholder"><p>No hay suficientes datos para mostrar tendencias</p></div>
                     </div>
-                    <div class="chart-card narrow distribution-grid">
+                    <div class="chart-card narrow distribution-container">
                         <h2><i class="fas fa-chart-pie"></i> Distribución por Categorías</h2>
-                        <div class="category-box"><p>Ingresos</p><p class="cat-value">$0.00</p><p class="cat-entries">0 entradas</p></div>
-                        <div class="category-box"><p>Costo de Ventas</p><p class="cat-value">$0.00</p><p class="cat-entries">0 entradas</p></div>
-                        <div class="category-box"><p>Gastos Operativos</p><p class="cat-value">$0.00</p><p class="cat-entries">0 entradas</p></div>
-                        <div class="category-box"><p>Activos</p><p class="cat-value">$0.00</p><p class="cat-entries">0 entradas</p></div>
-                        <div class="category-box"><p>Pasivos</p><p class="cat-value">$0.00</p><p class="cat-entries">0 entradas</p></div>
-                        <div class="category-box"><p>Capital</p><p class="cat-value">$0.00</p><p class="cat-entries">0 entradas</p></div>
+                        
+                        <div class="distribution-columns">
+                            <div class="distribution-group">
+                                <h3>ESTADO DE RESULTADOS (P&L)</h3>
+                                <div class="category-box income-box"><p>Ingresos</p><p class="cat-value">$0.00</p><p class="cat-entries">0 entradas</p></div>
+                                <div class="category-box expense-box"><p>Costo de Ventas</p><p class="cat-value">$0.00</p><p class="cat-entries">0 entradas</p></div>
+                                <div class="category-box expense-box"><p>Gastos Operativos</p><p class="cat-value">$0.00</p><p class="cat-entries">0 entradas</p></div>
+                            </div>
+
+                            <div class="distribution-group">
+                                <h3>BALANCE GENERAL (BS)</h3>
+                                <div class="category-box asset-box"><p>Activos</p><p class="cat-value">$0.00</p><p class="cat-entries">0 entradas</p></div>
+                                <div class="category-box liability-box"><p>Pasivos</p><p class="cat-value">$0.00</p><p class="cat-entries">0 entradas</p></div>
+                                <div class="category-box equity-box"><p>Capital</p><p class="cat-value">$0.00</p><p class="cat-entries">0 entradas</p></div>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                    </div>
                 <div class="quick-actions-row">
                     <h2>Acciones Rápidas</h2>
                     <div class="actions-grid">
@@ -99,7 +123,7 @@
                         <label for="monto-presupuestado">Monto Presupuestado *</label><input type="number" id="monto-presupuestado" value="$ 0.00" required>
                         <label for="presupuesto-categoria">Categoría *</label><select id="presupuesto-categoria" required><option value="" disabled selected>Seleccione una categoría</option></select>
                         <label for="periodo">Periodo (YYYY-MM) *</label>
-                        <div class="date-input"><input type="month" id="periodo" placeholder="------ de --" required></div>
+                        <div class="date-input"><input type="date" id="periodo" placeholder="------ de --" required></div>
                         <button type="submit" class="btn-success">Crear Presupuesto</button>
                     </form>
                 </div>
@@ -157,10 +181,23 @@
     </div>
 
     <script>
+        // Array de consejos simulados por la IA
+        const aiAdviceList = [
+            "¡Bienvenido! Empiece por registrar su primera **Nueva Entrada** para que la IA pueda analizar su situación y ofrecerle consejos personalizados. ¡El éxito financiero comienza con la data!",
+            "**Crea un Presupuesto** para el próximo mes. Enfocarse en limitar los 'Gastos Operativos' es el primer paso para mejorar el margen de utilidad.",
+            "La falta de entradas genera una **pérdida virtual**. Agregue sus datos de 'Ingresos' y 'Costo de Ventas' para ver una métrica de utilidad real.",
+            "Para una visión completa, intente **Generar un Reporte**. La IA incluirá proyecciones de flujo de caja para ayudarle en la toma de decisiones futuras.",
+            "Considere automatizar el registro de sus **Activos** y **Pasivos**. Tener un balance claro es crucial para la salud a largo plazo de su negocio."
+        ];
+
+        let currentAdviceIndex = 0;
+
         document.addEventListener('DOMContentLoaded', () => {
             const navItems = document.querySelectorAll('.nav-item');
             const mainViews = document.querySelectorAll('.main-content');
             const quickActionButtons = document.querySelectorAll('.quick-action-btn');
+            const aiAdviceText = document.getElementById('ai-advice-text');
+            const nextAdviceBtn = document.getElementById('next-advice-btn');
 
             function showView(viewId) {
                 // 1. Oculta todas las vistas
@@ -174,6 +211,11 @@
                 if (activeNavItem) {
                     activeNavItem.classList.add('active');
                 }
+            }
+
+            function updateAdvice() {
+                aiAdviceText.innerHTML = aiAdviceList[currentAdviceIndex];
+                currentAdviceIndex = (currentAdviceIndex + 1) % aiAdviceList.length; // Cicla al siguiente consejo
             }
 
             // Manejar clics en la navegación principal
@@ -193,9 +235,15 @@
                     showView(view);
                 });
             });
+
+            // Manejar clic en el botón de siguiente consejo
+            if (nextAdviceBtn) {
+                nextAdviceBtn.addEventListener('click', updateAdvice);
+            }
             
-            // Mostrar Dashboard al cargar
+            // Mostrar Dashboard al cargar y el primer consejo
             showView('dashboard');
+            updateAdvice(); // Muestra el primer consejo
         });
     </script>
 </body>

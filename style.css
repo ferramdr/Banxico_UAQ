@@ -515,3 +515,133 @@ input:checked + .slider:before {
     font-size: 1.8rem;
     margin-bottom: 10px;
 }
+
+/* Sección de Consejos de IA */
+.ai-advice-row {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.ai-advice-card {
+    background: #1e2129; /* Un poco más claro que el fondo principal */
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border-left: 5px solid #6c5ce7; /* Borde de color púrpura para destacar la IA */
+}
+
+.ai-advice-card .fas.fa-robot {
+    font-size: 3.5rem;
+    color: #6c5ce7;
+    margin-right: 20px;
+    min-width: 60px; /* Asegura el espacio */
+}
+
+.ai-advice-card h2 {
+    margin: 0 0 8px 0;
+    font-size: 1.2rem;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.ai-advice-card p {
+    margin: 0 0 15px 0;
+    color: #b0b0b0;
+    line-height: 1.4;
+    font-size: 0.95rem;
+}
+
+/* Estilo del botón "Siguiente Consejo" */
+.btn-secondary {
+    background-color: transparent;
+    border: 1px solid #6c5ce7;
+    color: #6c5ce7;
+    padding: 8px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.btn-secondary:hover {
+    background-color: #6c5ce7;
+    color: #ffffff;
+}
+
+/* Asegura que el texto en negrita (para la IA) se vea */
+.ai-advice-card strong {
+    color: #ffffff;
+}
+
+
+/* --- ESTILOS PARA LA DISTRIBUCIÓN REORGANIZADA --- */
+
+/* Contenedor principal para permitir la nueva estructura */
+.distribution-container {
+    /* Mantiene el estilo general de la tarjeta narrow */
+    display: flex;
+    flex-direction: column; /* Apila el título y las columnas */
+}
+
+.distribution-columns {
+    display: flex;
+    gap: 15px; /* Espacio entre las dos columnas (P&L y BS) */
+    margin-top: 10px;
+    flex-grow: 1;
+}
+
+.distribution-group {
+    flex: 1; /* Distribuye el espacio equitativamente */
+    display: flex;
+    flex-direction: column;
+}
+
+.distribution-group h3 {
+    font-size: 0.8rem;
+    color: #8c8c8c;
+    margin: 0 0 10px 0;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #2e313b;
+    font-weight: 700;
+}
+
+/* Estilo de las cajas individuales para que no usen grid de 3x2 */
+.category-box {
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 8px; /* Espacio entre las cajas */
+    background-color: #2e313b; /* Fondo de la caja individual */
+    display: flex;
+    flex-direction: column;
+}
+
+.category-box p:first-child {
+    font-size: 0.85rem;
+    color: #b0b0b0;
+    margin-bottom: 2px;
+}
+
+.cat-value {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.cat-entries {
+    font-size: 0.75rem;
+    color: #8c8c8c;
+}
+
+/* Colores sutiles para diferenciar las categorías (opcional, pero mejora la claridad) */
+.income-box { border-left: 3px solid #00b894; } /* Verde para Ingresos */
+.expense-box { border-left: 3px solid #d63031; } /* Rojo para Gastos */
+.asset-box { border-left: 3px solid #74b9ff; } /* Azul claro para Activos */
+.liability-box { border-left: 3px solid #ff7675; } /* Coral para Pasivos */
+.equity-box { border-left: 3px solid #a29bfe; } /* Púrpura para Capital */
+
+/* ELIMINAR el estilo original de distribución-grid para evitar conflictos si existe */
+.distribution-grid {
+    display: none; /* O remueve esta clase del HTML original */
+}
