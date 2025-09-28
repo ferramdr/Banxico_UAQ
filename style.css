@@ -1,18 +1,16 @@
-/* Variables de color para un manejo más fácil */
 :root {
-    --color-bg-dark: #0f172a; /* Fondo principal oscuro */
-    --color-bg-card: #1e293b; /* Fondo de tarjetas/módulos */
-    --color-text-light: #f1f5f9; /* Texto claro */
-    --color-text-secondary: #94a3b8; /* Texto secundario/etiquetas */
-    --color-primary-blue: #3b82f6; /* Azul primario (para el botón activo) */
-    --color-gradient-start: #0f172a; /* Inicio del degradado de fondo */
-    --color-gradient-end: #0c0e1b; /* Final del degradado de fondo */
-    --color-success: #10b981; /* Verde (positivo) */
-    --color-error: #ef4444; /* Rojo (negativo/pérdida) */
+    --color-bg-dark: #0f172a;
+    --color-bg-card: #1e293b;
+    --color-text-light: #f1f5f9;
+    --color-text-secondary: #94a3b8;
+    --color-primary-blue: #3b82f6;
+    --color-gradient-start: #0f172a;
+    --color-gradient-end: #0c0e1b;
+    --color-success: #10b981;
+    --color-error: #ef4444;
     --color-purple: #6d28d9;
 }
 
-/* Estilos generales y fondo degradado */
 body {
     font-family: 'Arial', sans-serif;
     background-color: var(--color-bg-dark);
@@ -30,7 +28,6 @@ body {
 }
 
 .main-content {
-    /* Base para todas las vistas */
     padding-top: 20px;
 }
 
@@ -50,7 +47,6 @@ h2 {
     margin-bottom: 20px;
 }
 
-/* --- Navegación Superior (Top-Nav) --- */
 .top-nav {
     display: flex;
     justify-content: space-between;
@@ -94,14 +90,6 @@ h2 {
     box-shadow: 0 2px 5px rgba(59, 130, 246, 0.5);
 }
 
-.btn-estados {
-    /* El botón de estados tiene el color principal de la aplicación, independientemente de si está activo o no */
-    background-color: var(--color-primary-blue);
-    color: var(--color-text-light);
-    font-weight: bold;
-    box-shadow: 0 2px 5px rgba(59, 130, 246, 0.5);
-}
-
 .nav-item i {
     margin-right: 8px;
 }
@@ -111,7 +99,6 @@ h2 {
     color: var(--color-text-secondary);
 }
 
-/* --- Estilos de Tarjetas Base --- */
 .metric-card, .chart-card, .quick-action-btn, .category-box, .form-card, .recent-entries-card {
     background-color: var(--color-bg-card);
     padding: 20px;
@@ -119,7 +106,6 @@ h2 {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
-/* --- Dashboard View --- */
 .metrics-row {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -159,7 +145,6 @@ h2 {
     border-left: 5px solid var(--color-error);
 }
 
-/* Fila de Gráficos */
 .charts-row {
     display: flex;
     gap: 20px;
@@ -204,12 +189,8 @@ h2 {
     text-align: center;
 }
 
-/* Grid de Distribución */
 .distribution-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
-    padding: 20px;
+    display: none; 
 }
 
 .category-box {
@@ -220,7 +201,6 @@ h2 {
     text-align: center;
 }
 
-/* Acciones Rápidas */
 .quick-actions-row h2 {
     font-size: 1.2rem;
     margin-bottom: 15px;
@@ -252,7 +232,6 @@ h2 {
     color: var(--color-success);
 }
 
-/* Pie de página pequeño */
 .made-with {
     text-align: right;
     font-size: 0.75rem;
@@ -260,7 +239,6 @@ h2 {
     margin-top: 40px;
 }
 
-/* --- Estilos Comunes para Formularios (Captura, Presupuesto, Generar) --- */
 .capture-view, .generation-view {
     display: flex;
     gap: 30px;
@@ -314,7 +292,6 @@ h2 {
     pointer-events: none;
 }
 
-/* Estilos de Botones de Formulario */
 .btn-primary {
     background: linear-gradient(90deg, #4f46e5, #3b82f6);
     color: white;
@@ -358,7 +335,6 @@ h2 {
 }
 
 .btn-ai-generate.purple-gradient {
-    /* Degradado morado para el botón de "Estados" */
     background: linear-gradient(90deg, var(--color-purple), #8b5cf6); 
     box-shadow: 0 5px 15px rgba(109, 40, 217, 0.5);
     width: auto;
@@ -384,7 +360,6 @@ h2 {
     font-size: 4rem;
 }
 
-/* Generar Vista Específica */
 .date-range-group {
     display: flex;
     gap: 20px;
@@ -393,7 +368,6 @@ h2 {
     flex: 1;
 }
 
-/* Estilos para el switch/toggle */
 .advanced-options {
     background-color: #0f172a;
     padding: 20px;
@@ -424,7 +398,7 @@ h2 {
     cursor: pointer;
     color: var(--color-text-secondary);
     font-size: 0.95rem;
-    padding-left: 65px; /* Espacio para el slider */
+    padding-left: 65px;
     box-sizing: border-box;
 }
 
@@ -486,7 +460,6 @@ input:checked + .slider:before {
     font-size: 0.85rem;
 }
 
-/* --- Vista de Estados --- */
 .states-view {
     display: flex;
     justify-content: center;
@@ -516,27 +489,26 @@ input:checked + .slider:before {
     margin-bottom: 10px;
 }
 
-/* Sección de Consejos de IA */
 .ai-advice-row {
     margin-top: 20px;
     margin-bottom: 20px;
 }
 
 .ai-advice-card {
-    background: #1e2129; /* Un poco más claro que el fondo principal */
+    background: #1e2129;
     border-radius: 12px;
     padding: 20px;
     display: flex;
     align-items: center;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    border-left: 5px solid #6c5ce7; /* Borde de color púrpura para destacar la IA */
+    border-left: 5px solid #6c5ce7;
 }
 
 .ai-advice-card .fas.fa-robot {
     font-size: 3.5rem;
     color: #6c5ce7;
     margin-right: 20px;
-    min-width: 60px; /* Asegura el espacio */
+    min-width: 60px;
 }
 
 .ai-advice-card h2 {
@@ -553,7 +525,6 @@ input:checked + .slider:before {
     font-size: 0.95rem;
 }
 
-/* Estilo del botón "Siguiente Consejo" */
 .btn-secondary {
     background-color: transparent;
     border: 1px solid #6c5ce7;
@@ -570,30 +541,24 @@ input:checked + .slider:before {
     color: #ffffff;
 }
 
-/* Asegura que el texto en negrita (para la IA) se vea */
 .ai-advice-card strong {
     color: #ffffff;
 }
 
-
-/* --- ESTILOS PARA LA DISTRIBUCIÓN REORGANIZADA --- */
-
-/* Contenedor principal para permitir la nueva estructura */
 .distribution-container {
-    /* Mantiene el estilo general de la tarjeta narrow */
     display: flex;
-    flex-direction: column; /* Apila el título y las columnas */
+    flex-direction: column;
 }
 
 .distribution-columns {
     display: flex;
-    gap: 15px; /* Espacio entre las dos columnas (P&L y BS) */
+    gap: 15px;
     margin-top: 10px;
     flex-grow: 1;
 }
 
 .distribution-group {
-    flex: 1; /* Distribuye el espacio equitativamente */
+    flex: 1;
     display: flex;
     flex-direction: column;
 }
@@ -607,12 +572,11 @@ input:checked + .slider:before {
     font-weight: 700;
 }
 
-/* Estilo de las cajas individuales para que no usen grid de 3x2 */
 .category-box {
     padding: 10px;
     border-radius: 8px;
-    margin-bottom: 8px; /* Espacio entre las cajas */
-    background-color: #2e313b; /* Fondo de la caja individual */
+    margin-bottom: 8px;
+    background-color: #2e313b;
     display: flex;
     flex-direction: column;
 }
@@ -634,14 +598,119 @@ input:checked + .slider:before {
     color: #8c8c8c;
 }
 
-/* Colores sutiles para diferenciar las categorías (opcional, pero mejora la claridad) */
-.income-box { border-left: 3px solid #00b894; } /* Verde para Ingresos */
-.expense-box { border-left: 3px solid #d63031; } /* Rojo para Gastos */
-.asset-box { border-left: 3px solid #74b9ff; } /* Azul claro para Activos */
-.liability-box { border-left: 3px solid #ff7675; } /* Coral para Pasivos */
-.equity-box { border-left: 3px solid #a29bfe; } /* Púrpura para Capital */
+.income-box { border-left: 3px solid #00b894; }
+.expense-box { border-left: 3px solid #d63031; }
+.asset-box { border-left: 3px solid #74b9ff; }
+.liability-box { border-left: 3px solid #ff7675; }
+.equity-box { border-left: 3px solid #a29bfe; }
 
-/* ELIMINAR el estilo original de distribución-grid para evitar conflictos si existe */
-.distribution-grid {
-    display: none; /* O remueve esta clase del HTML original */
+/* ========================================================= */
+/* === SECCIÓN DE RESPONSIVIDAD (Media Queries) === */
+/* ========================================================= */
+
+@media (max-width: 1200px) {
+    .dashboard-container {
+        padding: 15px;
+        max-width: 95%;
+    }
+
+    .top-nav {
+        flex-wrap: wrap;
+        padding: 10px;
+    }
+    .nav-links {
+        gap: 10px;
+        margin-top: 10px;
+        flex-basis: 100%;
+        justify-content: center;
+    }
+    .user-info {
+        display: none;
+    }
+
+    .metrics-row {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+
+    .charts-row {
+        flex-direction: column;
+    }
+    .chart-card.wide, .chart-card.narrow {
+        flex-basis: 100%;
+        min-height: 300px;
+    }
+
+    .distribution-columns {
+        display: flex;
+        gap: 20px;
+    }
+    .distribution-group {
+        flex: 1; 
+        display: flex;
+        flex-direction: column;
+    }
+
+    .capture-view, .generation-view {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .form-card, .recent-entries-card {
+        flex-basis: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .metrics-row {
+        grid-template-columns: 1fr;
+    }
+
+    .distribution-columns {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .actions-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+    .quick-action-btn {
+        padding: 12px 10px;
+        font-size: 0.9rem;
+    }
+    
+    .nav-links {
+        flex-wrap: wrap; 
+        justify-content: space-around;
+    }
+    .nav-item {
+        padding: 8px 10px;
+        font-size: 0.85rem;
+        flex-grow: 1; 
+        text-align: center;
+        min-width: 80px;
+    }
+    .nav-item i {
+        display: block;
+        margin-right: 0;
+        margin-bottom: 2px;
+        font-size: 1.1rem;
+    }
+    .nav-item:not(.active) {
+        color: #7b889a; 
+    }
+    .logo {
+        flex-basis: 100%;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+    
+    .date-range-group {
+        flex-direction: column;
+    }
+    
+    .states-message-card {
+        padding: 30px 20px;
+        max-width: 90%;
+    }
 }
